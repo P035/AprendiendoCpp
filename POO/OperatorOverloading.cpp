@@ -1,28 +1,32 @@
 #include <iostream>
 using namespace std;
 
-class Concatenador{
+class Str{
 
 	private:
+		class output{
+			private:
+				string str;
+			public:
+				output(){}
+				output(string str):
+				str(str){}
+				output operator<< (Str &objeto){
+					cout << objeto.str << endl;
+				}	
+		};
 		string str;
 	public:
-		Concatenador(){}
-		Concatenador(string str):
+		Str(string str):
 		str(str){}
-		Concatenador operator+(Concatenador &objeto){
-			Concatenador stri;
-			stri.str = this->str + objeto.str;
-			return stri;
-		}
-		void GetStr(){
-			cout << str << endl;
-		}
+		output out;
+
 };
 
 int main(){
-	Concatenador objeto1("caca "), objeto2("peo");
-	Concatenador concatenado = objeto1 + objeto2;
-	concatenado.GetStr();
-	return 0;
 
+	Str stri("hola");
+	stri.out << stri;	
+
+	return 0;
 }
