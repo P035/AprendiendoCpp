@@ -8,3 +8,7 @@ Hay otra carpeta llamada SinPOO que es donde están mis ejercicios y archivos m�
 Todo está compilado para linux, pero uno puede tomar cualquier archivo y compilarlo para el sistema operativo que uno use.
 
 Todo esto lo estoy aprendiendo en sololearn y cuando termine creare un nuevo repositorio donde aprendere estructura de datos.
+
+# Herencia y polimorfismo
+
+Dentro de la carpeta POO esta la carpeta Herencia_Polimorfismo donde están todos los ejercicios y ejecutables relacionados a este tema.
