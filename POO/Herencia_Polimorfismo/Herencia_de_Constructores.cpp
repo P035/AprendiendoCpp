@@ -20,6 +20,8 @@ class Robot{
 			}
 		}
 
+	protected:
+		bool habilitado;
 	public:
 		Robot(){
 			cout << "Encendiendo por primera vez, ingrese los datos iniciales." << endl;
@@ -33,9 +35,11 @@ class Robot{
 			cin >> clave_de_permiso;
 			if(Verificacion(clave_de_permiso)){
 				cout << "Robot verificado con éxito." << endl;
+				habilitado = true;
 			}
 			else{
-				cout << "Clave no reconocida. El robot no iniciara hasta tener una clave válida." << clave_de_permiso << endl;
+				cout << "Clave no reconocida. El robot no iniciara hasta tener una clave válida." << endl;
+				habilitado = false;
 			}
 		}
 };
@@ -56,32 +60,37 @@ class Domestico : public Robot{
 
 	public:
 		Domestico(){
-			cout << "Ingrese la lista de tareas que hará su robot (sin espacios y se parado por comas): ";
-			cin >> tareas;
-			cout << "Lista de tareas guardada!" << endl;
+			if(habilitado == true){
+			
+				cout << "Ingrese la lista de tareas que hará su robot (sin espacios y se parado por comas): ";
+				cin >> tareas;
+				cout << "Lista de tareas guardada!" << endl;
+			}
 		}
 		void Tareas(){
-			tareas += ",";
-			string Tareas_que_Hacer[Cantidad_Tareas()];
-			string memoria = "";
-			int index = 0;
-			for(char i : tareas){
-				if(i != ','){
-					memoria += i;
+			if(habilitado == true){
+				tareas += ",";
+				string Tareas_que_Hacer[Cantidad_Tareas()];
+				string memoria = "";
+				int index = 0;
+				for(char i : tareas){
+					if(i != ','){
+						memoria += i;
+					}
+					else{
+						Tareas_que_Hacer[index] = memoria;
+						memoria = "";
+						index++;
+					}
 				}
-				else{
-					Tareas_que_Hacer[index] = memoria;
-					memoria = "";
-					index++;
-				}
-			}
-			for(int i = 0; i < Cantidad_Tareas(); i++){
-				if(i == 0){
-					cout << "Primero voy a " << Tareas_que_Hacer[i] << endl;
-					continue;
-				}
-				if(Tareas_que_Hacer[i] != ""){
-					cout << "Ahora voy a " << Tareas_que_Hacer[i] << endl;
+				for(int i = 0; i < Cantidad_Tareas(); i++){
+					if(i == 0){
+						cout << "Primero voy a " << Tareas_que_Hacer[i] << endl;
+						continue;
+					}
+					if(Tareas_que_Hacer[i] != ""){
+						cout << "Ahora voy a " << Tareas_que_Hacer[i] << endl;
+					}
 				}
 			}
 		}
